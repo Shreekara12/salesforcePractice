@@ -1,0 +1,32 @@
+<!--This lwc component contains a picklist field which will ask user to pick the type of input that he wants to give.
+ Based on selected value, corresponding type of input field is displayed. Upon entry of value into the field and submission,
+ a toast message will be shown. If no value is entered, error message will be shown.
+ This helps us understand how to create a custom picklist field using lightning-combobox as well as the ShowToastEvent.
+ -->
+<template>
+    <lightning-card title="Select your input type">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox 
+                name="inputType" 
+                label="Input Type" 
+                value={selectedInput} 
+                options={inputTypes}
+                variant="standard"
+                clearable = "true" 
+                placeholder="Choose an Option"
+                onchange={optionChangeHandler} message-when-value-missing="Please select an input type">
+            </lightning-combobox>
+            <template if:true={inputSelected}>
+                <lightning-input name={selectedInputName} label={selectedLabel} type={selectedType} onchange={inputChangeHandler}></lightning-input>
+            </template>
+                <!--<template if:true={nameSelected}>
+                    <lightning-input name="name" label={selectedLabel} type="text" onchange={inputChangeHandler}></lightning-input>
+                </template>
+                <template if:true={emailSelected}>
+                    <lightning-input name="email" label="Enter Email" type="email" onchange={inputChangeHandler}></lightning-input>
+                </template>-->
+            <lightning-button label="Submit" onclick={submitHandler}></lightning-button>
+        </div>
+    </lightning-card>
+
+</template>
