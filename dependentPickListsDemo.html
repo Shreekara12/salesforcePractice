@@ -1,0 +1,27 @@
+<!--This component displays 2 picklist fields- Country and State. Based on the country selected,
+ the State values are shown in the 2nd piicklist field. This helps us understand the implementation of Dependent picklists in LWC-->
+<template>
+    <lightning-card title="Dependent PickLists Demo" icon-name="utility:settings">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox 
+            name="country" 
+            label="Country" 
+            placeholder="Select Country" 
+            options={countries}
+            value={selectedCountry}
+            clearable = "true"
+            onchange={countryChangeHandler}
+            ></lightning-combobox>
+            <lightning-combobox 
+            name="state" 
+            label="State" 
+            placeholder="Select State" 
+            options={states}
+            value={selectedState}
+            onchange={stateChangeHandler}
+            ></lightning-combobox>
+            <p>Country selected: <strong>{selectedCountry}</strong></p>
+            <p>State selected: <strong>{selectedState}</strong></p>
+        </div>
+    </lightning-card>
+</template>
