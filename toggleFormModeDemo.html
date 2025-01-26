@@ -1,0 +1,19 @@
+<!--This component displays a toggle button. If true, 3 input field will be displayed. User can enter data.
+If toggle button is in false position, the values will be displayed in Read only mode.-->
+<template>
+    <lightning-card title="Toggle Form Mode">
+        <div class="slds-var-m-around_medium">
+            <lightning-input type="toggle" label="Edit Mode" checked={isEditMode} onchange={toggleHandler}></lightning-input>
+            <template if:true={isEditMode}>
+                <lightning-input type="text" label="Name" name="name" onchange={changeHandler} value={formData.name}></lightning-input><br/>
+                <lightning-input type="text" label="Phone" name="phone" onchange={changeHandler} value={formData.phone}></lightning-input><br/>
+                <lightning-input type="text" label="Email" name="email" onchange={changeHandler} value={formData.email}></lightning-input>
+            </template>
+            <template if:false={isEditMode}>
+                <p>{formData.name}</p><br/>
+                <p>{formData.phone}</p><br/>
+                <p>{formData.email}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
