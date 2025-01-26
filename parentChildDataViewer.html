@@ -1,0 +1,29 @@
+<!--This component displays a picklist of Accounts. When the user selects an account from the list,
+a list of contacts related the selected Account appears on the screen.
+This component uses wired method to fetch the list of accounts for the picklist.
+For fetching related contacts upon selection of an account, an imperative apex call is made.-->
+<template>
+    <lightning-card title="Parent-Child Data Viewer">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox 
+            label="Select Account"
+            options={accountOptions}
+            placeholder="Choose an Account"
+            message-when-value-missing="No Account selected"
+            onchange={accountChangeHandler}
+            ></lightning-combobox>
+        </div>
+        <div class="slds-var-m-around_medium">
+            <template if:true={contacts}>
+                <lightning-datatable 
+                key-field="Id"
+                data={contacts}
+                columns={columns}>
+                </lightning-datatable>
+            </template>
+            <template if:false={contacts}>
+                <p>No Contacts to display!</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
