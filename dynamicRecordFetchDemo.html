@@ -1,0 +1,22 @@
+<!--This component takes an integer input from the user. Based on the user input, it displays the top n high revenue accounts.
+We have used wired method to fetch the accounts dynamically when the user input changes-->
+<template>
+    <lightning-card title="Top Performing Accounts" icon-name="custom:custom48">
+        <div class="slds-var-m-around_medium">
+            <input type="number" onchange={changeHandler} title="Number of Accounts:"></input>
+            <template if:true={accounts}>
+                <template for:each={accounts} for:item="acc">
+                    <ul key={acc.Id}>
+                        <li>{acc.Name} - {acc.AnnualRevenue}</li>
+                    </ul>
+                </template>
+            </template>
+            <div class="slds-var-m-around_medium">
+                <template if:true={error}>
+                    Some error occured!!
+                </template>
+            </div>
+        </div>
+        
+    </lightning-card>
+</template>
