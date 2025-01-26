@@ -1,0 +1,39 @@
+<template>
+    <!--This card displays a list of languages to select from. The user can pick multiple languages.
+    This helps us understand lightning-dual-listbox component-->
+    <lightning-card title="Multi-select Picklist Demo">
+        <div class="slds-var-m-around_medium">
+            <lightning-dual-listbox 
+            name="languages"
+            label="Select Languages"
+            field-level-help="Select your preferred languages"
+            options={options}
+            source-label="Available Languages"
+            selected-label="Selected Languages"
+            required="true"
+            onchange={handleChange}
+            ></lightning-dual-listbox>
+            <p>You have selected: <strong>{selected}</strong></p>
+        </div>
+    </lightning-card>
+<!--his card displays a list of Skills to select from. User can pick multiple skills.
+User has to pick a minimum of 3 skills and cannot pick more than 5 skills-->
+    <lightning-card title="Multi-select picklist with Min and Max limits">
+        <div class="slds-var-m-around_medium">
+            <lightning-dual-listbox
+            name="skills" 
+            label="Select Skills"
+            field-level-help="Select your skills"
+            options={skillOptions}
+            source-label="Available Skills"
+            selected-label="Selected Skills"
+            max="5"
+            min="3"
+            message-when-range-underflow="Select at least 3 skills"
+            message-when-range-overflow="You can select upto maximum of 5 skills"
+            onchange={handleChange}
+            ></lightning-dual-listbox>
+            <p>Your skillset: <strong>{selectedSkills}</strong></p>
+        </div>
+    </lightning-card>
+</template>
