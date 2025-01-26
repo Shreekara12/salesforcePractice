@@ -1,0 +1,22 @@
+<!--This component displays a table of contacts(predefined data)
+Upon clicking Select all button, all records get selected
+Upon clicking Deselect All button, all records get deselected-->
+<template>
+    <lightning-card title="Dynamic table with Select/Deselect">
+        <div class="slds-var-m-around_medium">
+            <lightning-button label="Select All" variant="brand" onclick={handleSelectAll}></lightning-button>
+            <lightning-button label="Deselect All" variant="destructive" onclick={handleDeselectAll} class="slds-m-left_x-small"></lightning-button>
+        </div>
+        <p>Records selected: {selectedCount}</p>
+        <div class="slds-var-m-around_medium">
+            <lightning-datatable 
+            key-field="id" 
+            data={data} 
+            columns={columns}
+            selected-rows={selectedRows}
+            onrowselection={handleRowSelect}
+            ></lightning-datatable>
+        </div>
+        
+    </lightning-card>
+</template>
