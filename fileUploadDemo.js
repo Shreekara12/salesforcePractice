@@ -2,7 +2,7 @@ import { LightningElement, api } from 'lwc';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent'
 
 export default class FileUploadDemo extends LightningElement {
-    @api myRecordId
+    @api recordId
 
     get acceptedFormats(){
         return ['.png', '.pdf']
